@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Kalkulator kredytowy</title>
+</h:head>
+<h:body>		   
+
+    <p:panel header="Kalkulator kredytowy" toggleable="true" closable="true" toggleSpeed="200"
+                closeSpeed="200" widgetVar="panel">
+                
+         <p:messages id="msg"/>
+
+         <div class="card">
+	    	<h:form>
+		        <h:panelGrid id="grid" columns="3" cellpadding="7">
+		            <p:outputLabel for="amount" value="Kwota:"/>
+		            <p:inputText id="amount" value="#{calcCredBB.amount}" required="true" requiredMessage="Nie podano kwoty"/>
+		            <p:message for="amount" display="icon"/>
+		            
+		            <p:outputLabel for="years" value="Ile lat:"/>
+		            <p:inputText id="years" required="true" value="#{calcCredBB.years}" requiredMessage="Nie podano ilości lat"/>
+		            <p:message for="years" display="icon"/>
+		            
+		            <p:outputLabel for="interest" value="Oprocentowanie:"/>
+		            <p:inputText id="interest" required="true" value="#{calcCredBB.interest}" requiredMessage="Nie podano oprocenotwania"/>
+		            <p:message for="interest" display="icon"/>
+		        
+		        	<p:commandButton id="submitButton" value="Oblicz" icon="pi pi-check" iconPos="right" update="msg,grid" styleClass="mt-3" action="#{calcCredBB.calc()}"/>
+			        <p:commandButton value="Oblicz (AJAX)" action="#{calcCredBB.calc_AJAX()}" icon="pi pi-check" iconPos="right" update="msg,grid">
+						<f:ajax execute="@form" render="msg" />
+					</p:commandButton>	
+		        </h:panelGrid>	        
+	    	</h:form>
+		</div>
+    </p:panel>
+
+</h:body>
+</html>
