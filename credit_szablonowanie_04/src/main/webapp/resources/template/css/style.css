@@ -1,0 +1,22 @@
+body{
+	background: url("../img/background.jpg.jsf?ln=template") no-repeat center center fixed;
+	background-size: cover;
+	margin:0;
+}
+
+#wrapper{
+	margin: 1em;
+	min-width: 700px;
+}
+
+#footer{
+	text-align: center;
+}
+
+#header{
+	text-align: center;
+}
+
+.bottom-space{
+	margin-bottom: 1em;
+}
